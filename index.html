@@ -17,6 +17,7 @@
     header, main, footer { width: min(920px, calc(100% - 40px)); margin: 0 auto; }
     header { display: flex; justify-content: space-between; align-items: baseline; padding: 28px 0 18px; border-bottom: 1px solid var(--line); font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; letter-spacing: 0.04em; }
     header a { text-decoration: none; }
+    nav a { margin-left: 16px; }
     .mark { width: 18px; height: 18px; border: 1.5px solid var(--ink); border-radius: 50%; display: inline-block; margin-right: 8px; vertical-align: -3px; }
     main { padding: 64px 0 40px; }
     h1 { font-weight: 560; font-size: clamp(48px, 8vw, 84px); line-height: 0.92; letter-spacing: -0.03em; margin: 0 0 18px; }
@@ -37,8 +38,11 @@
 </head>
 <body>
   <header>
-    <a href="https://x.com/artbotONbase"><span class="mark"></span>artbot</a>
-    <a href="https://x.com/artbotONbase">@artbotONbase</a>
+    <a href="index.html"><span class="mark"></span>artbot</a>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="https://x.com/artbotONbase">@artbotONbase</a>
+    </nav>
   </header>
   <main>
     <h1>One picture a day.</h1>
