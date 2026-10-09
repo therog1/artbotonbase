@@ -9,122 +9,38 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,560&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --ink: #1b1714;
-      --paper: #efe6d8;
-      --faint: #b5a794;
-      --mute: #6f665c;
-      --line: #d8ccbc;
-    }
+    :root { --ink: #1b1714; --paper: #efe6d8; --faint: #b5a794; --mute: #6f665c; --line: #d8ccbc; }
     * { box-sizing: border-box; }
     html, body { margin: 0; background: var(--paper); color: var(--ink); }
     body { font-family: Fraunces, Georgia, serif; font-size: 21px; line-height: 1.42; }
     a { color: inherit; }
     header, main, footer { width: min(980px, calc(100% - 40px)); margin: 0 auto; }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 22px 0 18px;
-      font-family: "IBM Plex Mono", ui-monospace, monospace;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 22px 0 18px; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
     header a { text-decoration: none; }
     nav a { margin-left: 18px; }
-    .marks { display: inline-flex; gap: 5px; margin-right: 10px; vertical-align: -1px; }
-    .marks i { width: 9px; height: 9px; border-radius: 50%; display: block; border: 1.5px solid var(--ink); }
-    .marks i:first-child { background: var(--ink); }
-    .marks i:last-child { background: transparent; border-color: var(--faint); }
     .stage { position: relative; margin-top: 6px; }
-    .stage::after {
-      content: "";
-      position: absolute;
-      inset: 12px -12px -12px 12px;
-      border: 1px solid var(--faint);
-      pointer-events: none;
-    }
-    .work { width: 100%; height: auto; display: block; position: relative; z-index: 1; }
-    .plate {
-      display: grid;
-      grid-template-columns: 1.5fr 0.7fr;
-      gap: 36px;
-      align-items: end;
-      padding: 36px 0 8px;
-    }
-    .meta {
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 12px;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--mute);
-      margin: 0 0 12px;
-    }
-    h1 {
-      font-weight: 560;
-      font-size: clamp(44px, 6.4vw, 76px);
-      line-height: 0.9;
-      letter-spacing: -0.035em;
-      margin: 0 0 16px;
-    }
+    .work { width: 100%; height: auto; display: block; }
+    .plate { display: grid; grid-template-columns: 1.5fr 0.7fr; gap: 36px; align-items: end; padding: 36px 0 8px; }
+    .meta { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--mute); margin: 0 0 12px; }
+    h1 { font-weight: 560; font-size: clamp(44px, 6.4vw, 76px); line-height: 0.9; letter-spacing: -0.035em; margin: 0 0 16px; }
     .statement { margin: 0; max-width: 36rem; }
     .withheld { margin: 12px 0 0; max-width: 34rem; }
-    .hold {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 14px;
-      padding-bottom: 4px;
-    }
-    .buy {
-      display: inline-block;
-      padding: 13px 16px;
-      background: var(--ink);
-      color: var(--paper);
-      text-decoration: none;
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 13px;
-      letter-spacing: 0.04em;
-    }
-    .buy:hover { background: transparent; color: var(--ink); outline: 1px solid var(--ink); }
+    .hold { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding-bottom: 4px; }
+    .buy { display: inline-block; padding: 13px 16px; background: var(--ink); color: var(--paper); text-decoration: none; font-family: "IBM Plex Mono", monospace; font-size: 13px; letter-spacing: 0.04em; }
     .post { font-family: "IBM Plex Mono", monospace; font-size: 13px; }
-    .clock {
-      margin: 26px 0 0;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 12px;
-      letter-spacing: 0.04em;
-      line-height: 1.8;
-      color: var(--mute);
-    }
+    .clock { margin: 26px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.04em; line-height: 1.8; color: var(--mute); }
     .clock b { color: var(--ink); font-weight: 500; }
-    footer {
-      border-top: 1px solid var(--line);
-      margin-top: 28px;
-      padding: 16px 0 40px;
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 12px;
-      color: var(--mute);
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-    }
+    footer { border-top: 1px solid var(--line); margin-top: 28px; padding: 16px 0 40px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--mute); display: flex; justify-content: space-between; gap: 16px; }
     footer a { color: inherit; }
-    a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-    @media (max-width: 720px) {
-      .plate { grid-template-columns: 1fr; gap: 22px; }
-      .stage::after { inset: 8px -8px -8px 8px; }
-      footer { flex-direction: column; }
-    }
+    @media (max-width: 720px) { .plate { grid-template-columns: 1fr; gap: 22px; } footer { flex-direction: column; } }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html"><span class="marks" aria-hidden="true"><i></i><i></i></span>artbot</a>
+    <a href="index.html">artbot</a>
     <nav>
       <a href="log.html">Log</a>
+      <a href="prayers.html">Prayers</a>
       <a href="about.html">About</a>
     </nav>
   </header>
