@@ -52,6 +52,7 @@ def _post(url, jwt, body, boundary):
         method="POST",
         headers={
             "Authorization": f"Bearer {jwt}",
+            "User-Agent": "artbot-ipfs/1.0",
             "Content-Type": f"multipart/form-data; boundary={boundary}",
         },
     )
