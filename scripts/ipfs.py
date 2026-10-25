@@ -9,12 +9,14 @@ import json
 import os
 import sys
 import time
+import urllib.error
 import urllib.request
 import uuid
 from pathlib import Path
 
 DAYS = Path("days")
 INDEX = DAYS / "ipfs.json"
+V3_URL = "https://uploads.pinata.cloud/v3/files"
 PIN_URL = "https://api.pinata.cloud/pinning/pinFileToIPFS"
 HTTPS = "https://therog1.github.io/artbotonbase/days/{date}.png"
 
@@ -29,21 +31,23 @@ def mime_of(data):
     return "application/octet-stream", "bin"
 
 
-def pin(jwt, date, data, mime, ext):
+def _multipart(fields, name, data, mime):
     boundary = uuid.uuid4().hex
-    name = f"artbot-{date}.{ext}"
     parts = [
-        (f'Content-Disposition: form-data; name="file"; filename="{name}"\r\n'
-         f"Content-Type: {mime}\r\n\r\n").encode() + data,
-        b'Content-Disposition: form-data; name="pinataMetadata"\r\n\r\n'
-        + json.dumps({"name": name}).encode(),
-        b'Content-Disposition: form-data; name="pinataOptions"\r\n\r\n'
-        + json.dumps({"cidVersion": 1}).encode(),
+        (f'Content-Disposition: form-data; name="{k}"\r\n\r\n').encode() + v.encode()
+        for k, v in fields.items()
     ]
+    parts.append(
+        (f'Content-Disposition: form-data; name="file"; filename="{name}"\r\n'
+         f"Content-Type: {mime}\r\n\r\n").encode() + data
+    )
     body = b"".join(f"--{boundary}\r\n".encode() + p + b"\r\n" for p in parts)
-    body += f"--{boundary}--\r\n".encode()
+    return body + f"--{boundary}--\r\n".encode(), boundary
+
+
+def _post(url, jwt, body, boundary):
     req = urllib.request.Request(
-        PIN_URL,
+        url,
         data=body,
         method="POST",
         headers={
@@ -52,7 +56,28 @@ def pin(jwt, date, data, mime, ext):
         },
     )
     with urllib.request.urlopen(req, timeout=120) as res:
-        return json.load(res)["IpfsHash"]
+        return json.load(res)
+
+
+def pin(jwt, date, data, mime, ext):
+    name = f"artbot-{date}.{ext}"
+    # Pinata Files API (v3), public network. Falls back to the legacy pinning API.
+    try:
+        body, b = _multipart({"network": "public", "name": name}, name, data, mime)
+        return _post(V3_URL, jwt, body, b)["data"]["cid"]
+    except urllib.error.HTTPError as err:
+        if err.code not in (401, 403, 404):
+            raise
+        v3 = f"v3 {err.code} {err.read().decode(errors='replace')[:160]}"
+    body, b = _multipart(
+        {"pinataMetadata": json.dumps({"name": name}), "pinataOptions": json.dumps({"cidVersion": 1})},
+        name, data, mime,
+    )
+    try:
+        return _post(PIN_URL, jwt, body, b)["IpfsHash"]
+    except urllib.error.HTTPError as err:
+        legacy = f"legacy {err.code} {err.read().decode(errors='replace')[:160]}"
+        raise RuntimeError(f"{v3} | {legacy}") from None
 
 
 def point_json(date, cid, mime):
@@ -87,7 +112,7 @@ def main():
             try:
                 cid = pin(jwt, date, data, mime, ext)
             except Exception as err:  # never fail the run
-                detail = ""
+                detail = f" {err}" if isinstance(err, RuntimeError) else ""
                 if hasattr(err, "code"):
                     try:
                         detail = f" {err.code} {err.read().decode()[:200]}"
