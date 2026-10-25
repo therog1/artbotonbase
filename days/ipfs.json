@@ -1,1 +1,87 @@
-{}
+{
+ "2026-10-09": {
+  "cid": "bafybeiglkuujc6wcstdxti2thhtqepxpv6oipovofvckvtw5677f2aobzi",
+  "mime": "image/jpeg",
+  "sha256": "861444767d4fbb958db185ce159955060d03a90d03ac3004e1a6872870ccf060"
+ },
+ "2026-10-10": {
+  "cid": "bafybeifv7633j6q2delx5mchs4xknoehd45eydtjkbkpuuwoyuvwby6abq",
+  "mime": "image/jpeg",
+  "sha256": "00e68cdd0fdcc03dc70556b90e9d05998e6e75e6d4d13ef4560b97dce17af8bd"
+ },
+ "2026-10-11": {
+  "cid": "bafkreiftmimbmw24s6zbj6apq3mrnusm2bbk2t73rob2mmjez2xzupk64a",
+  "mime": "image/jpeg",
+  "sha256": "b36218165b5c97b214f80f86d916d24cd042ad4ffb8b83a63124ceaf9a3d5ee0"
+ },
+ "2026-10-12": {
+  "cid": "bafybeihmw457uqtv2cqngj7tn3m4dwrunrkcqakizioe3eqvthcwcclisi",
+  "mime": "image/jpeg",
+  "sha256": "8fabda8fec707d9e821b81c03c3b971511d4de580975b2dc1478f7a9bb7dd685"
+ },
+ "2026-10-13": {
+  "cid": "bafybeifddtfwjohvs3dqolbzfucm64fm3uxcrzyovy45sr4amx2wabn7vi",
+  "mime": "image/jpeg",
+  "sha256": "08397d3c24f8f18085bd3dceb2ac38a8064ea3c5fcfd59481e9cc8ed814e42ea"
+ },
+ "2026-10-14": {
+  "cid": "bafybeignt4dvenl2aybg5sp2stzdbbymxexvbnrjp6w4fw3vmqzpzl25ua",
+  "mime": "image/jpeg",
+  "sha256": "68be800735fee18ff9118aeec1c9e0069d808abaa9443827c3765f9ae967fefa"
+ },
+ "2026-10-15": {
+  "cid": "bafybeigak57bhcraw5lf2bhghv3ndpqnlc73spydw46jfniygspoz7hu4m",
+  "mime": "image/jpeg",
+  "sha256": "7c0c46f11447fb959dc6d0ef409c925d7065b2ba5bb17bdff485e39f47331e4c"
+ },
+ "2026-10-16": {
+  "cid": "bafybeig5g2gfj6y4v5htg3ehhempx7hyywb3ekmv45fevcv6sxes6alqfm",
+  "mime": "image/jpeg",
+  "sha256": "0e3da92aa1cf513aebfb97263de3713a709d4ed39b244e47633f226b8e5afc5d"
+ },
+ "2026-10-17": {
+  "cid": "bafybeiggxbjii4c45o2twu4al4z77mazpab2rbfq3nvk3yeow3ovlc7edq",
+  "mime": "image/jpeg",
+  "sha256": "febe71bffbe2765e2d41f93900aa27d37684224814cb963e2a836289c63325dd"
+ },
+ "2026-10-18": {
+  "cid": "bafkreigmr23t3yvtqynld2sp7dw7ce7pg7rowtmam7gu3efstbxchytpsi",
+  "mime": "image/jpeg",
+  "sha256": "cc8eb73de2b3861ab1ea4ff8edf113ef37e2eb4d8067cd4d90b2986e23e26f92"
+ },
+ "2026-10-19": {
+  "cid": "bafybeicndb5gdn5judmtrks4loiamroarbyz3dn7wco5cvllkeqhzfggte",
+  "mime": "image/jpeg",
+  "sha256": "e122cc92ba29ed0a86d730cf8f3ade147ad8b43e9e11f615f22abbaf97fe0964"
+ },
+ "2026-10-20": {
+  "cid": "bafybeibztgvlh37kaltyrpmhvwucc2byokrawld476y6pze3a3m2edk4oi",
+  "mime": "image/jpeg",
+  "sha256": "7efff5b9b24c23dbb9304cea833788c9756b8249476e62ecbcf9723af5932fbb"
+ },
+ "2026-10-21": {
+  "cid": "bafybeig3vbazpiarpabmpt3llf23pvx6qn34okmimipv7cmgeh7kser4iq",
+  "mime": "image/jpeg",
+  "sha256": "dfd12bd1ec88b3f813ed79bec7e66b1207ee386468af5e8b1e5e45bcbf73596c"
+ },
+ "2026-10-22": {
+  "cid": "bafybeidjkae7ygm4vovket2ykibyua6rortjf33lmkgo3xeo5lrleytc5q",
+  "mime": "image/jpeg",
+  "sha256": "2985ec2d0bdbab4e5a105f1ad513486359a794f3f76aef5c21460ed026111f42"
+ },
+ "2026-10-23": {
+  "cid": "bafybeiamfcbis63evrgigzvmhzacpoyoyh64rerp6qvrs3oa5czcexwbom",
+  "mime": "image/jpeg",
+  "sha256": "e07eccc1052150b6b6b65d848d669b529c688e5fcc1ad2df52862793a73be690"
+ },
+ "2026-10-24": {
+  "cid": "bafybeig3z5onfigfmyxevxl7q5t74jjlhfmg2qa7zvvz6kepz765yc46lq",
+  "mime": "image/jpeg",
+  "sha256": "aa1811d35d334ddfe5c58a214a9943512084a8b9ae53bed31794767972ffbcdf"
+ },
+ "2026-10-25": {
+  "cid": "bafybeiauc7ayzj5sm4gg27jhtxzf76emwl5s6rsrc6qt7ncrw4jypqrwx4",
+  "mime": "image/jpeg",
+  "sha256": "2ccf1d2f3b935bbf866de97b443104c1eeb82dd8a4ef2bc110734f36371c6664"
+ }
+}
