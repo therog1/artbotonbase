@@ -1,0 +1,49 @@
+name: ipfs
+
+on:
+  push:
+    branches: [main]
+    paths: ["days/*.png"]
+  workflow_dispatch:
+
+concurrency:
+  group: ipfs
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  pin:
+    if: ${{ !contains(github.event.head_commit.message, '[skip ipfs]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Wait for the day's metadata
+        run: |
+          # The daily pipeline pushes the image and then its JSON a moment later.
+          for i in $(seq 1 12); do
+            git pull -q --ff-only origin main || true
+            missing=0
+            for png in days/*.png; do [ -f "${png%.png}.json" ] || missing=1; done
+            [ "$missing" = "0" ] && break
+            sleep 10
+          done
+      - name: Pin images and point metadata at IPFS
+        env:
+          PINATA_JWT: ${{ secrets.PINATA_JWT }}
+        run: python3 scripts/ipfs.py
+      - name: Commit metadata
+        run: |
+          git config user.name artbot
+          git config user.email artbot@users.noreply.github.com
+          git add days/*.json
+          git diff --cached --quiet && { echo "nothing to commit"; exit 0; }
+          git commit -q -m "IPFS image links [skip ipfs]"
+          for i in 1 2 3; do
+            git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0
+            sleep 5
+          done
+          echo "push failed, will retry on next run"
