@@ -87,7 +87,13 @@ def main():
             try:
                 cid = pin(jwt, date, data, mime, ext)
             except Exception as err:  # never fail the run
-                print(f"{date}: pin failed ({type(err).__name__}), skipped")
+                detail = ""
+                if hasattr(err, "code"):
+                    try:
+                        detail = f" {err.code} {err.read().decode()[:200]}"
+                    except Exception:
+                        detail = f" {err.code}"
+                print(f"{date}: pin failed ({type(err).__name__}{detail}), skipped")
                 if entry:  # old CID is for an older image: fall back to https
                     path = DAYS / f"{date}.json"
                     if path.exists():
